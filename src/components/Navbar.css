@@ -1,0 +1,94 @@
+.user-nav {
+  position: sticky;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  color: #64748b;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-link svg {
+  width: 22px;
+  height: 22px;
+}
+
+.nav-link:active {
+  transform: scale(0.95);
+}
+
+.nav-link.active {
+  color: #ec4899;
+  background: #fdf2f8;
+}
+
+.nav-link:hover:not(.active) {
+  color: #374151;
+  background: #f8fafc;
+}
+
+.nav-link.logout {
+  color: #ef4444;
+}
+
+.nav-link.logout:hover {
+  background: #fef2f2;
+}
+
+/* Responsivo */
+@media (min-width: 768px) {
+  .nav-links {
+    gap: 16px;
+    padding: 12px 20px;
+  }
+
+  .nav-link {
+    flex-direction: row;
+    gap: 8px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .nav-link svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 0.65rem;
+  }
+
+  .nav-link svg {
+    width: 20px;
+    height: 20px;
+  }
+}

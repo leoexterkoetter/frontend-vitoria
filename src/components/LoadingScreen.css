@@ -1,0 +1,142 @@
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fbcfe8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.loading-logo {
+  margin-bottom: 40px;
+}
+
+.loading-icon {
+  font-size: 80px;
+  margin-bottom: 16px;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.loading-logo h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+/* Animação das unhas */
+.loading-animation {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.nail {
+  width: 20px;
+  height: 35px;
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+  animation: nailPulse 1.4s ease-in-out infinite;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+}
+
+.nail-1 { animation-delay: 0s; }
+.nail-2 { animation-delay: 0.1s; }
+.nail-3 { animation-delay: 0.2s; }
+.nail-4 { animation-delay: 0.3s; }
+.nail-5 { animation-delay: 0.4s; }
+
+@keyframes nailPulse {
+  0%, 100% {
+    transform: scaleY(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleY(1.3);
+    opacity: 1;
+  }
+}
+
+/* Barra de progresso */
+.loading-progress-container {
+  max-width: 280px;
+  margin: 0 auto 24px;
+}
+
+.loading-progress-bar {
+  height: 8px;
+  background: rgba(236, 72, 153, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.loading-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ec4899 0%, #db2777 50%, #ec4899 100%);
+  background-size: 200% 100%;
+  border-radius: 10px;
+  transition: width 0.1s ease-out;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.loading-progress-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ec4899;
+}
+
+.loading-message {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .loading-icon {
+    font-size: 60px;
+  }
+
+  .loading-logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .nail {
+    width: 16px;
+    height: 28px;
+  }
+
+  .loading-progress-container {
+    max-width: 220px;
+  }
+}

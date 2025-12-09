@@ -1,0 +1,10 @@
+* Remover tempo do procedimento, pois este poderá ser variavel.
+* Deixar apto e com design rápido e responsivo para celular, com UX/UI bonita. 
+* Modificar o sistema de login para ser feito apenas com nome completo e numero de celular.
+* Admin poder mover, excluir e adicionar agendamentos.
+* Aparecer uma mensagem na tela de confirmação de agendamento (pra cliente) assim que aceito pela administrador.
+* Na tela do cliente o Calendário aparecer apenas as disponibilidades de data livre que o adm colocar.
+* Remover página "Nossos Serviços"
+* Na tela de adm:  agendamentos > ações - colocar um botão de lixeira para poder excluir o agendamento. Tem a opção de confirmar, recusar quero implementar a de apagar.
+* Tela do cliente Ao decorrer do agendamento, assim que o cliente escolher o procedimento pular para o passo do agendamento e também incluir uma enquete "Você possui alguma unha quebrada ou danificada que necessita de um novo alongamento? (  ) sim (  ) nao. Caso a cliente selecione SIM, aparece um campo de observação pra ela escrever, opcionalmente. E um aviso prévio que está sujeito a uma taxa de R$5,00 por cada unha que necessita de um novo alongamento."
+Ao final do agendamento, o cliente deverá escolher a opção de pagamento (PIX ou Dinheiro)

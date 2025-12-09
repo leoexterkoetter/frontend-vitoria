@@ -1,0 +1,59 @@
+/* ================================================
+   VITORIA NAIL DESIGNER - Global Styles
+   ESCOPO: Apenas páginas de USUÁRIO (não admin)
+   ================================================ */
+
+/* Scrollbar customizada */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb {
+  background: #FF69B4;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF1493;
+}
+
+/* ==========================================================
+   RESET BÁSICO
+   ========================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================
+   NÃO APLICA ESTILOS GLOBAIS QUANDO ESTÁ NO ADMIN
+   ========================================================== */
+
+/* Body apenas para rotas de usuário (fora do admin-layout) */
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.65;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Botão reset */
+button {
+  font-family: inherit;
+}
+
+/* ==========================================================
+   UTILITÁRIOS ESPECÍFICOS (usar apenas em páginas user)
+   ========================================================== */
+
+.user-page {
+  background: linear-gradient(135deg, #FFE5EE 0%, #FFF5F8 100%);
+  min-height: 100vh;
+  padding-bottom: 90px; /* espaço para navbar fixa */
+}
+
+.text-center { text-align: center; }
+.mt-2 { margin-top: 16px; }
+.mb-2 { margin-bottom: 16px; }
