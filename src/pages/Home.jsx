@@ -1,10 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { Calendar, CalendarCheck, Sparkles, Star, LogIn } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Calendar, CalendarCheck, Sparkles, MessageCircle, Instagram, MapPin } from 'lucide-react';
 import authService from '../services/authService';
 import './Home.css';
 
 export default function Home() {
-  const navigate = useNavigate();
   const isAuthenticated = authService.isAuthenticated();
 
   return (
@@ -33,32 +32,47 @@ export default function Home() {
                 Meus Agendamentos
               </Link>
             ) : (
-              <Link to="/services" className="btn btn-secondary">
-                <Star size={20} />
-                Ver Serviços
-              </Link>
+              <>
+                <div className="social-buttons">
+                  <a 
+                    href="http://wa.me/5548998164811" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-whatsapp"
+                  >
+                    <MessageCircle size={20} />
+                    WhatsApp
+                  </a>
+                  <a 
+                    href="https://www.instagram.com/vitoriaext_nail/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-instagram"
+                  >
+                    <Instagram size={20} />
+                    Instagram
+                  </a>
+                </div>
+                <a 
+                  href="https://www.google.com/maps?q=-28.770416,-49.372613"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-location"
+                >
+                  <MapPin size={20} />
+                  Ver Localização
+                </a>
+              </>
             )}
           </div>
         </div>
         <div className="hero-image">
           <div className="hero-image-placeholder">
-            <Star size={80} />
+            <img src="/logo-ve.png" alt="Vitória Nail Designer" className="hero-logo" />
           </div>
         </div>
       </section>
 
-      {/* Botão de login discreto no rodapé */}
-      {!isAuthenticated && (
-        <div className="home-footer-login">
-          <button 
-            className="login-link-discrete"
-            onClick={() => navigate('/login')}
-          >
-            <LogIn size={16} />
-            <span>Área do Cliente / Admin</span>
-          </button>
-        </div>
-      )}
     </div>
   );
 }

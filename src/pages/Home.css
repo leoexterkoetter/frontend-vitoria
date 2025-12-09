@@ -112,6 +112,48 @@
   box-shadow: 0 8px 16px rgba(236, 72, 153, 0.15);
 }
 
+/* Botões de redes sociais */
+.social-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-whatsapp {
+  background: white;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
+}
+
+.btn-whatsapp svg {
+  color: #25D366;
+}
+
+.btn-whatsapp:hover {
+  background: #f0fdf4;
+  border-color: #25D366;
+  color: #25D366;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.15);
+}
+
+.btn-instagram {
+  background: white;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
+}
+
+.btn-instagram svg {
+  color: #E1306C;
+}
+
+.btn-instagram:hover {
+  background: #fdf2f8;
+  border-color: #E1306C;
+  color: #E1306C;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(225, 48, 108, 0.15);
+}
+
 .hero-image {
   display: flex;
   align-items: center;
@@ -121,14 +163,22 @@
 .hero-image-placeholder {
   width: 350px;
   height: 350px;
-  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  box-shadow: 0 20px 60px rgba(236, 72, 153, 0.3);
+  box-shadow: 0 20px 60px rgba(236, 72, 153, 0.2);
   animation: float 3s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.hero-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 @keyframes float {
@@ -136,37 +186,23 @@
   50% { transform: translateY(-20px); }
 }
 
-/* Botão de login discreto */
-.home-footer-login {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
+/* Botão de localização */
+.btn-location {
+  background: white;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
 }
 
-.login-link-discrete {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: transparent;
-  border: 1px solid rgba(236, 72, 153, 0.3);
-  border-radius: 50px;
-  color: #94a3b8;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-family: inherit;
-}
-
-.login-link-discrete:hover {
+.btn-location svg {
   color: #ec4899;
-  border-color: #ec4899;
-  background: rgba(236, 72, 153, 0.05);
 }
 
-.login-link-discrete svg {
-  opacity: 0.7;
+.btn-location:hover {
+  background: #fdf2f8;
+  border-color: #ec4899;
+  color: #ec4899;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.15);
 }
 
 /* Responsive */
@@ -220,6 +256,16 @@
     width: 100%;
   }
 
+  .social-buttons {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .social-buttons .btn {
+    flex: 1;
+    padding: 14px 16px;
+  }
+
   .hero-image-placeholder {
     width: 200px;
     height: 200px;
@@ -253,5 +299,10 @@
   .btn {
     padding: 14px 24px;
     font-size: 0.95rem;
+  }
+
+  .social-buttons .btn {
+    padding: 12px 8px;
+    font-size: 0.85rem;
   }
 }

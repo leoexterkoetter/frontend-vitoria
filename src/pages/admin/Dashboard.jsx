@@ -195,24 +195,26 @@ export default function Dashboard() {
               <p>Os agendamentos aparecerão aqui</p>
             </div>
           ) : (
-            <div className="admin-appointments-list">
+            <div className="dashboard-appointments-list">
               {recentAppointments.map((apt) => (
-                <div key={apt._id} className="admin-appointment-item">
-                  <div className="admin-appointment-avatar">
-                    {apt.user?.name?.charAt(0).toUpperCase() || 'U'}
-                  </div>
-                  
-                  <div className="admin-appointment-info">
-                    <div className="admin-appointment-name">
-                      {apt.user?.name || '-'}
+                <div key={apt._id} className="dashboard-appointment-card">
+                  <div className="dashboard-card-header">
+                    <div className="dashboard-avatar">
+                      {apt.user?.name?.charAt(0).toUpperCase() || 'U'}
+                    </div>
+                    <div className="dashboard-user-info">
+                      <div className="dashboard-user-name">{apt.user?.name || '-'}</div>
                       <span className={`admin-status-badge ${getStatusClass(apt.status)}`}>
                         {getStatusText(apt.status)}
                       </span>
                     </div>
-                    <div className="admin-appointment-service">{apt.service?.name || '-'}</div>
+                  </div>
+                  
+                  <div className="dashboard-service-name">
+                    {apt.service?.name || '-'}
                   </div>
 
-                  <div className="admin-appointment-meta">
+                  <div className="dashboard-meta-row">
                     <span>
                       <Calendar size={14} />
                       {formatDate(apt.timeSlot?.date)}
@@ -232,6 +234,80 @@ export default function Dashboard() {
           )}
         </div>
       </main>
+
+      <style>{`
+        .dashboard-appointments-list {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .dashboard-appointment-card {
+          background: #fff;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+          padding: 16px;
+        }
+
+        .dashboard-card-header {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          margin-bottom: 12px;
+        }
+
+        .dashboard-avatar {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          font-size: 1.1rem;
+          flex-shrink: 0;
+        }
+
+        .dashboard-user-info {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .dashboard-user-name {
+          font-weight: 600;
+          color: #1e293b;
+          margin-bottom: 6px;
+          word-break: break-word;
+        }
+
+        .dashboard-service-name {
+          color: #64748b;
+          font-size: 0.9rem;
+          margin-bottom: 12px;
+          padding-bottom: 12px;
+          border-bottom: 1px solid #f1f5f9;
+        }
+
+        .dashboard-meta-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+          color: #64748b;
+          font-size: 0.85rem;
+        }
+
+        .dashboard-meta-row span {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .dashboard-meta-row svg {
+          color: #94a3b8;
+        }
+      `}</style>
     </div>
   );
 }

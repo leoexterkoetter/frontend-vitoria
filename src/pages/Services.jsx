@@ -19,6 +19,7 @@ export default function Services() {
   const slotsRef = useRef(null);
   const summaryRef = useRef(null);
   const loginRef = useRef(null);
+  const damagedNailsRef = useRef(null);
 
   // Estado do formulário de login/registro
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -32,6 +33,10 @@ export default function Services() {
     pin: '',
     paymentMethod: 'pix'
   });
+
+  // Estado para enquete de unhas danificadas
+  const [hasDamagedNails, setHasDamagedNails] = useState(null);
+  const [damagedNailsNote, setDamagedNailsNote] = useState('');
 
   const isAuthenticated = authService.isAuthenticated();
 
@@ -54,6 +59,8 @@ export default function Services() {
   const handleSelectService = async (service) => {
     setSelectedService(service);
     setSelectedSlot(null);
+    setHasDamagedNails(null);
+    setDamagedNailsNote('');
     setLoadingSlots(true);
     setError('');
 
@@ -67,9 +74,9 @@ export default function Services() {
       
       setAvailableSlots(slots);
 
-      // Auto-scroll para horários
+      // Auto-scroll para enquete de unhas danificadas
       setTimeout(() => {
-        slotsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        damagedNailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 100);
     } catch (err) {
       console.error('Erro ao buscar horários:', err);
@@ -109,10 +116,17 @@ export default function Services() {
     setError('');
 
     try {
+      // Monta a nota com informação de unhas danificadas
+      let notes = '';
+      if (hasDamagedNails === 'sim') {
+        notes = `⚠️ UNHA DANIFICADA: ${damagedNailsNote || 'Cliente informou que possui unha(s) danificada(s)'}`;
+      }
+
       await api.post('/appointments', {
         serviceId: selectedService._id,
         timeSlotId: selectedSlot._id,
-        paymentMethod: formData.paymentMethod
+        paymentMethod: formData.paymentMethod,
+        notes
       });
 
       setSuccess('Agendamento realizado com sucesso!');
@@ -122,6 +136,8 @@ export default function Services() {
       setSelectedSlot(null);
       setAvailableSlots([]);
       setShowLoginModal(false);
+      setHasDamagedNails(null);
+      setDamagedNailsNote('');
 
       // Redireciona após 2 segundos
       setTimeout(() => {
@@ -329,6 +345,71 @@ export default function Services() {
             ))}
           </div>
         </section>
+
+        {/* Enquete: Unhas Danificadas */}
+        {selectedService && (
+          <section className="damaged-nails-section" ref={damagedNailsRef}>
+            <h2>Unhas Danificadas</h2>
+            <div className="damaged-nails-card">
+              <p className="damaged-nails-question">
+                Você possui alguma unha quebrada ou danificada que necessita de um novo alongamento?
+              </p>
+              
+              <div className="damaged-nails-options">
+                <label className={`damaged-option ${hasDamagedNails === 'sim' ? 'selected' : ''}`}>
+                  <input
+                    type="radio"
+                    name="damagedNails"
+                    value="sim"
+                    checked={hasDamagedNails === 'sim'}
+                    onChange={(e) => {
+                      setHasDamagedNails(e.target.value);
+                      setTimeout(() => {
+                        slotsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }, 300);
+                    }}
+                  />
+                  <span className="radio-custom"></span>
+                  Sim
+                </label>
+                <label className={`damaged-option ${hasDamagedNails === 'nao' ? 'selected' : ''}`}>
+                  <input
+                    type="radio"
+                    name="damagedNails"
+                    value="nao"
+                    checked={hasDamagedNails === 'nao'}
+                    onChange={(e) => {
+                      setHasDamagedNails(e.target.value);
+                      setTimeout(() => {
+                        slotsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }, 100);
+                    }}
+                  />
+                  <span className="radio-custom"></span>
+                  Não
+                </label>
+              </div>
+
+              {hasDamagedNails === 'sim' && (
+                <div className="damaged-nails-warning">
+                  <div className="warning-message">
+                    <span className="warning-icon">⚠️</span>
+                    <p>
+                      Está sujeito a taxa adicional de <strong>R$5,00 por unha</strong> que necessite novo alongamento.
+                    </p>
+                  </div>
+                  <textarea
+                    className="damaged-nails-textarea"
+                    placeholder="Descreva quantas unhas estão danificadas (opcional)"
+                    value={damagedNailsNote}
+                    onChange={(e) => setDamagedNailsNote(e.target.value)}
+                    rows={3}
+                  />
+                </div>
+              )}
+            </div>
+          </section>
+        )}
 
         {/* PASSO 2: Horários Disponíveis */}
         {selectedService && (
