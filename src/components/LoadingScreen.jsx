@@ -5,14 +5,14 @@ export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Atualiza o progresso gradualmente em 7 segundos
+    // Atualiza o progresso gradualmente em 3 segundos
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
           return 100;
         }
-        return prev + (100 / 70); // 70 intervalos de 100ms = 7 segundos
+return prev + (100 / 30); // 30 intervalos de 100ms = 3 segundos
       });
     }, 100);
 

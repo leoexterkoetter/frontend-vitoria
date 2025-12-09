@@ -13,7 +13,7 @@ export default function Home() {
         <div className="hero-content">
           <div className="hero-badge">
             <Sparkles size={16} />
-            <span>Bem-vinda ao Espaço Vitória Nail Designer</span>
+            <span>Bem-vinda ao Vitória Nail Designer</span>
           </div>
           <h1 className="hero-title">
             Suas unhas merecem o melhor cuidado
@@ -72,6 +72,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer com crédito */}
+      <footer className="home-footer">
+        <a 
+          href="https://www.instagram.com/leoexterkoetter/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="creator-credit"
+        >
+          Desenvolvido por <span>@leoexterkoetter</span>
+        </a>
+      </footer>
 
     </div>
   );

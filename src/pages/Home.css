@@ -205,6 +205,27 @@
   box-shadow: 0 8px 20px rgba(236, 72, 153, 0.15);
 }
 
+/* Footer crédito */
+.home-footer {
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.creator-credit {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.creator-credit:hover {
+  color: #ec4899;
+}
+
+.creator-credit span {
+  font-weight: 600;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .hero-section {
