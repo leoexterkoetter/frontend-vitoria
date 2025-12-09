@@ -13,7 +13,7 @@ export default function Home() {
         <div className="hero-content">
           <div className="hero-badge">
             <Sparkles size={16} />
-            <span>Bem-vinda ao Vitória Nail Designer</span>
+            <span>Bem-vinda ao Espaço Vitória Nail Designer</span>
           </div>
           <h1 className="hero-title">
             Suas unhas merecem o melhor cuidado
